@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 
+
 class MateriaParaLista extends Component {
 
     render() {
@@ -50,7 +51,6 @@ class MateriaParaLista extends Component {
                 </i>
             </small>);
         }
-
     }
 }
 
