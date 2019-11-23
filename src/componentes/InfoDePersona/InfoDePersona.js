@@ -7,7 +7,7 @@ class InfoDePersona extends Component {
         rememberMe: false
     };
 
-    eventoCheckb = even  =>{
+    evaluarEstadoDeCheckBox = even  =>{
         this.setState({rememberMe: even.target.checked});
         if(this.state.rememberMe === false){
             console.log('chekeado');
@@ -47,7 +47,7 @@ class InfoDePersona extends Component {
                                  <p>Aprobadas</p> 
                                 <input type="checkbox" 
                                 checked={this.state.rememberMe}
-                                onChange={this.eventoCheckb}
+                                onChange={this.evaluarEstadoDeCheckBox}
                                 ></input>
                                 </th>
                             </tr>
