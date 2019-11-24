@@ -1,26 +1,47 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react';
+import InfoDePersona from './componentes/InfoDePersona/InfoDePersona';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  render() {
+
+    let miPersona = {
+      nombre: "Juan José Lizarazo",
+      rol: "Estudiante",
+      descripcion: "Software: Ananké",
+      listaDeCursosTomados: [
+        {
+          nombre: ".NET",
+          nota: 4.4,
+          ciclo:"Ciclo IV"
+        },
+        {
+          nombre: "Oracle DB",
+          nota: 2.1,
+          ciclo:"Ciclo III"
+        },
+        {
+          nombre: "Express JS",
+          nota: 5.0,
+          ciclo:"Ciclo V"
+        }]
+    };
+
+    let miOtraPersona = {
+      nombre: "Narda Amador",
+      rol: "Estudiante",
+      descripcion: "Antropología: UNAL",
+      listaDeCursosTomados: [{nombre: "Arqueología", nota: 5.0,ciclo:"Ciclo VIII"}, 
+      {nombre: "Fund. Antropología", nota:3.3, ciclo:"Ciclo II"}]
+    };
+
+
+    return (
+      <React.Fragment>
+        <InfoDePersona persona={miPersona}></InfoDePersona>
+        <InfoDePersona persona={miOtraPersona}></InfoDePersona>
+      </React.Fragment>
+    );
+  }
 }
 
 export default App;
