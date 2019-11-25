@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import MateriaParaLista from './MateriaParaLista';
-import InfoDePersona from '../InfoDePersona';
 
 
 class ListaDeMaterias extends Component {
@@ -20,7 +19,7 @@ class ListaDeMaterias extends Component {
            
             if(this.props.listaDeCursos.estadoCheckBox === true  ){
            
-                if(this.props.listaDeCursos.listaDeCursos[i].nota > 3  ){
+                if(this.props.listaDeCursos.listaDeCursos[i].nota >= 3 ){
                     listaDeMateriasEnHTML.push(
                         <MateriaParaLista materia=
                             {{
@@ -47,7 +46,6 @@ class ListaDeMaterias extends Component {
         }
            
         }
-
 
         return (
             <ul class="rm-list-borders list-group list-group-flush">

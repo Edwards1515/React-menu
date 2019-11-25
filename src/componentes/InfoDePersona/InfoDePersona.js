@@ -9,14 +9,7 @@ class InfoDePersona extends Component {
     };
 
     evaluarEstadoDeCheckBox = event  =>{
-        this.setState({rememberMe: event.target.checked});
-        if(this.state.rememberMe === false){
-            
-            var estadoCheckBox = true;
-            console.log(estadoCheckBox);
-            console.log('chekeado');
-        }
-       
+        this.setState({rememberMe: event.target.checked}); 
     };
     render() {
         return (
@@ -27,9 +20,7 @@ class InfoDePersona extends Component {
                             
                             <div class="menu-header-content">
                                 
-                                <div class="avatar-icon-wrapper mb-3 avatar-icon-xl">
-                                    Perfil
-                                    
+                                <div class="avatar-icon-wrapper mb-3 avatar-icon-xl">                                    
                                     <div class="avatar-icon"><img src="assets/images/avatars/6.jpg" alt="Avatar 5" /></div>
                                 </div>
                                 <div>
@@ -37,17 +28,14 @@ class InfoDePersona extends Component {
                                     {this.obtenerDatos()}
                                     
                                 </div>
-                                <div class="menu-header-btn-pane pt-1">
-                                    <button class="btn-icon btn btn-warning btn-sm">View Complete Profile</button>
-                                </div>
                             </div>
                         </div>
                     </div>
                     <div class="p-3">
                         <table  width="100%">
-                           <tr>
+                           <tr align="center">
                            <th>
-                                <p>Lista de Materias</p>
+                                <h5>Lista de Materias</h5>
                             </th>
                            </tr>
                             <tr align="right">
@@ -73,7 +61,7 @@ class InfoDePersona extends Component {
                 </div>
             </div>
         );
-    }
+    } 
 
 
     obtenerDatos  = () => {
@@ -122,3 +110,4 @@ class InfoDePersona extends Component {
 }
 
 export default InfoDePersona;
+
