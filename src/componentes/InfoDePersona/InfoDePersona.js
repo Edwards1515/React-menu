@@ -21,7 +21,7 @@ class InfoDePersona extends Component {
                             <div class="menu-header-content">
                                 
                                 <div class="avatar-icon-wrapper mb-3 avatar-icon-xl">                                    
-                                    <div class="avatar-icon"><img src="assets/images/avatars/6.jpg" alt="Avatar 5" /></div>
+                                    {this. obtenerFotodePerfil()}
                                 </div>
                                 <div>
 
@@ -63,6 +63,18 @@ class InfoDePersona extends Component {
         );
     } 
 
+
+    obtenerFotodePerfil= () => {
+        let imagen = this.props.persona.imagen;
+        
+        for (let i = 0; i < imagen; i++) {
+            imagen = imagen[i];
+
+        }
+        return (
+            <div class="avatar-icon"><img src={imagen} alt="Avatar 5" /></div>
+        );
+    }
 
     obtenerDatos  = () => {
 
