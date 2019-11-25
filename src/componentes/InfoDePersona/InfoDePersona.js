@@ -3,15 +3,17 @@ import ListaDeMaterias from './listaDeMaterias/ListaDeMaterias';
 import MateriaParaLista from './listaDeMaterias/MateriaParaLista';
 
 class InfoDePersona extends Component {
+    state={
+        rememberMe: false
+    };
 
-    constructor() {
-        super();
-
-        this.state = {
-            labelDeNota: ""
+    evaluarEstadoDeCheckBox = even  =>{
+        this.setState({rememberMe: even.target.checked});
+        if(this.state.rememberMe === false){
+            console.log('chekeado');
         }
-    }
-    
+       
+    };
     render() {
         return (
             <div class="col-md-12 col-lg-6 col-xl-4">
@@ -40,13 +42,18 @@ class InfoDePersona extends Component {
                             </th>
                            </tr>
                             <tr align="right">
+                                
                                 <th>
-                                    <label for="boxcheck">Aprobadas</label><br></br>
-                                    <input  id="boxcheck" type="checkbox" name="checkbox" unchange="hideContent()" value=""></input>
+                                 <p>Aprobadas</p> 
+                                <input type="checkbox" 
+                                checked={this.state.rememberMe}
+                                onChange={this.evaluarEstadoDeCheckBox}
+                                ></input>
                                 </th>
                             </tr>
                         </table>
-                        <ListaDeMaterias id="lista" listaDeCursos={this.props.persona.listaDeCursosTomados}></ListaDeMaterias>
+   
+                        <ListaDeMaterias listaDeCursos={this.props.persona.listaDeCursosTomados}></ListaDeMaterias>
                     </div>
                     <div class="text-center d-block card-footer">
                         {this.obtenerInformacionDePromedio()}
@@ -63,6 +70,7 @@ class InfoDePersona extends Component {
         for (let i = 0; i < cursos.length; i++) {
             suma += cursos[i].nota;
         }
+
         return suma / cursos.length;
     }
 
@@ -76,18 +84,8 @@ class InfoDePersona extends Component {
             </ul>
         );
     }
-    
-  
-    hideContent() {
-        let element = document.getElementById("lista");
-        let check = document.getElementById("boxcheck");
-        
-        if (check.checked && element.nota >=3) {
-            element.style.display='block';
-        }
-        else {
-            element.style.display='none';
-        }
-    }
+
+
 }
+
 export default InfoDePersona;
