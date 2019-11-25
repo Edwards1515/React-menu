@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import MateriaParaLista from './MateriaParaLista';
+import InfoDePersona from '../InfoDePersona';
+
 
 class ListaDeMaterias extends Component {
 
@@ -14,16 +16,36 @@ class ListaDeMaterias extends Component {
     render() {
 
         let listaDeMateriasEnHTML = [];
-        for (let i = 0; i < this.props.listaDeCursos.length; i++) {
+        for (let i = 0; i < this.props.listaDeCursos.listaDeCursos.length; i++) {
+           
+            if(this.props.listaDeCursos.estadoCheckBox === true  ){
+           
+                if(this.props.listaDeCursos.listaDeCursos[i].nota > 3  ){
+                    listaDeMateriasEnHTML.push(
+                        <MateriaParaLista materia=
+                            {{
+                                nota: this.props.listaDeCursos.listaDeCursos[i].nota,
+                                nombre: this.props.listaDeCursos.listaDeCursos[i].nombre,
+                                ciclo: this.props.listaDeCursos.listaDeCursos[i].ciclo
+                            }}
+                        ></MateriaParaLista>
+                    );
+
+                
+            }
+        }else{
+
             listaDeMateriasEnHTML.push(
                 <MateriaParaLista materia=
                     {{
-                        nota: this.props.listaDeCursos[i].nota,
-                        nombre: this.props.listaDeCursos[i].nombre,
-                        ciclo: this.props.listaDeCursos[i].ciclo
+                        nota: this.props.listaDeCursos.listaDeCursos[i].nota,
+                        nombre: this.props.listaDeCursos.listaDeCursos[i].nombre,
+                        ciclo: this.props.listaDeCursos.listaDeCursos[i].ciclo
                     }}
                 ></MateriaParaLista>
                 );
+        }
+           
         }
 
 
