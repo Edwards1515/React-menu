@@ -31,15 +31,13 @@ class InfoDePersona extends Component {
                             </th>
                            </tr>
                             <tr align="right">
-                                
                                 <th>
-                                 <p>Aprobadas</p> 
-                                <input  id="boxcheck" type="checkbox" value="">{this.obtenerMateriasAprobadas()}</input>
+                                    <label for="boxcheck">Aprobadas</label><br></br>
+                                    <input  id="boxcheck" type="checkbox" name="checkbox" onClick="Mostrar_Ocultar()" value=""></input>
                                 </th>
                             </tr>
                         </table>
-
-                        <ListaDeMaterias listaDeCursos={this.props.persona.listaDeCursosTomados}></ListaDeMaterias>
+                        <ListaDeMaterias id="lista" listaDeCursos={this.props.persona.listaDeCursosTomados}></ListaDeMaterias>
                     </div>
                     <div class="text-center d-block card-footer">
                         {this.obtenerInformacionDePromedio()}
@@ -56,7 +54,6 @@ class InfoDePersona extends Component {
         for (let i = 0; i < cursos.length; i++) {
             suma += cursos[i].nota;
         }
-
         return suma / cursos.length;
     }
 
@@ -70,21 +67,25 @@ class InfoDePersona extends Component {
             </ul>
         );
     }
-
-    obtenerMateriasAprobadas = () => {
-        var checkb = document.getElementById('boxcheck');
-        window.onload = function filtrarMaterias() {
-         
-                if (checkb.checked === true) {
-                    var checkeado = true;
-                }
-                checkb.addEventListener("click", filtrarMaterias);
-                
-                console.log(checkeado);
-
-        }
+  
+    mostrar = () => {
+        document.getElementById("lista").style.display = "block";
     }
 
-}
+    ocultar = () => {
+        document.getElementById("lista").style.display = "none";
+    }
 
+    ocultarNotaBaja = () => {
+        let element = document.getElementById("lista");
+        
+        
+        if (element.style.display == "block") {
+            this.ocultar();
+        }
+        else {
+            this.mostrar();
+        }
+    }
+}
 export default InfoDePersona;
