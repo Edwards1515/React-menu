@@ -3,17 +3,11 @@ import ListaDeMaterias from './listaDeMaterias/ListaDeMaterias';
 import MateriaParaLista from './listaDeMaterias/MateriaParaLista';
 
 class InfoDePersona extends Component {
+   
     state={
         rememberMe: false
     };
 
-    evaluarEstadoDeCheckBox = even  =>{
-        this.setState({rememberMe: even.target.checked});
-        if(this.state.rememberMe === false){
-            console.log('chekeado');
-        }
-       
-    };
     render() {
         return (
             <div class="col-md-12 col-lg-6 col-xl-4">
@@ -45,7 +39,7 @@ class InfoDePersona extends Component {
                                 
                                 <th>
                                  <p>Aprobadas</p> 
-                                <input type="checkbox" 
+                                <input id="checkbox_1" type="checkbox" 
                                 checked={this.state.rememberMe}
                                 onChange={this.evaluarEstadoDeCheckBox}
                                 ></input>
@@ -85,6 +79,13 @@ class InfoDePersona extends Component {
         );
     }
 
+    evaluarEstadoDeCheckBox = event  =>{
+        this.setState({rememberMe: event.target.checked});
+        if(this.state.rememberMe === false){
+            console.log('chekeado');
+        }
+       
+    };
 
 }
 

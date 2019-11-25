@@ -23,7 +23,7 @@ class ListaDeMaterias extends Component {
                         ciclo: this.props.listaDeCursos[i].ciclo
                     }}
                 ></MateriaParaLista>
-            );
+                );
         }
 
 
