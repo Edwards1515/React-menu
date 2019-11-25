@@ -50,7 +50,6 @@ class MateriaParaLista extends Component {
                 </i>
             </small>);
         }
-
     }
 }
 

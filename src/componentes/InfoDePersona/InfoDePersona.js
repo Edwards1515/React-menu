@@ -3,6 +3,15 @@ import ListaDeMaterias from './listaDeMaterias/ListaDeMaterias';
 import MateriaParaLista from './listaDeMaterias/MateriaParaLista';
 
 class InfoDePersona extends Component {
+
+    constructor() {
+        super();
+
+        this.state = {
+            labelDeNota: ""
+        }
+    }
+    
     render() {
         return (
             <div class="col-md-12 col-lg-6 col-xl-4">
@@ -33,7 +42,7 @@ class InfoDePersona extends Component {
                             <tr align="right">
                                 <th>
                                     <label for="boxcheck">Aprobadas</label><br></br>
-                                    <input  id="boxcheck" type="checkbox" name="checkbox" onClick="Mostrar_Ocultar()" value=""></input>
+                                    <input  id="boxcheck" type="checkbox" name="checkbox" unchange="hideContent()" value=""></input>
                                 </th>
                             </tr>
                         </table>
@@ -67,24 +76,17 @@ class InfoDePersona extends Component {
             </ul>
         );
     }
+    
   
-    mostrar = () => {
-        document.getElementById("lista").style.display = "block";
-    }
-
-    ocultar = () => {
-        document.getElementById("lista").style.display = "none";
-    }
-
-    ocultarNotaBaja = () => {
+    hideContent() {
         let element = document.getElementById("lista");
+        let check = document.getElementById("boxcheck");
         
-        
-        if (element.style.display == "block") {
-            this.ocultar();
+        if (check.checked && element.nota >=3) {
+            element.style.display='block';
         }
         else {
-            this.mostrar();
+            element.style.display='none';
         }
     }
 }
