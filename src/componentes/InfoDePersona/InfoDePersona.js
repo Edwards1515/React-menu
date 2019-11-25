@@ -7,9 +7,12 @@ class InfoDePersona extends Component {
         rememberMe: false
     };
 
-    evaluarEstadoDeCheckBox = even  =>{
-        this.setState({rememberMe: even.target.checked});
+    evaluarEstadoDeCheckBox = event  =>{
+        this.setState({rememberMe: event.target.checked});
         if(this.state.rememberMe === false){
+            
+            var estadoCheckBox = true;
+            console.log(estadoCheckBox);
             console.log('chekeado');
         }
        
@@ -20,13 +23,18 @@ class InfoDePersona extends Component {
                 <div class="card-shadow-primary card-border mb-3 card">
                     <div class="dropdown-menu-header">
                         <div class="dropdown-menu-header-inner bg-dark">
+                            
                             <div class="menu-header-content">
+                                
                                 <div class="avatar-icon-wrapper mb-3 avatar-icon-xl">
+                                    Perfil
+                                    
                                     <div class="avatar-icon"><img src="assets/images/avatars/6.jpg" alt="Avatar 5" /></div>
                                 </div>
                                 <div>
-                                    <h5 class="menu-header-title">Isabelle Day</h5>
-                                    <h6 class="menu-header-subtitle">Security Officer</h6>
+
+                                    {this.obtenerDatos()}
+                                    
                                 </div>
                                 <div class="menu-header-btn-pane pt-1">
                                     <button class="btn-icon btn btn-warning btn-sm">View Complete Profile</button>
@@ -42,7 +50,7 @@ class InfoDePersona extends Component {
                             </th>
                            </tr>
                             <tr align="right">
-                                
+                               
                                 <th>
                                  <p>Aprobadas</p> 
                                 <input type="checkbox" 
@@ -52,14 +60,40 @@ class InfoDePersona extends Component {
                                 </th>
                             </tr>
                         </table>
-   
-                        <ListaDeMaterias listaDeCursos={this.props.persona.listaDeCursosTomados}></ListaDeMaterias>
+
+                        <ListaDeMaterias listaDeCursos={{
+                            listaDeCursos : this.props.persona.listaDeCursosTomados,
+                            estadoCheckBox : this.state.rememberMe
+                        }}></ListaDeMaterias>
                     </div>
                     <div class="text-center d-block card-footer">
                         {this.obtenerInformacionDePromedio()}
                     </div>
                 </div>
             </div>
+        );
+    }
+
+
+    obtenerDatos  = () => {
+
+        
+    for (let i = 0; i < this.props.persona.nombre.length; i++) {
+        var nombre = this.props.persona.nombre[i];
+        
+
+    }
+    for (let i = 0; i < this.props.persona.rol.length; i++) {
+        var rol = this.props.persona.rol[i];
+
+    }
+        return(
+            <div>
+                 <h5 class="menu-header-title">{nombre}</h5>
+                <h6 class="menu-header-subtitle">{rol}</h6>
+            </div>
+        
+
         );
     }
 
@@ -84,8 +118,6 @@ class InfoDePersona extends Component {
             </ul>
         );
     }
-
-
 }
 
 export default InfoDePersona;
