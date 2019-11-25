@@ -6,7 +6,7 @@ class App extends Component {
 
     let miPersona = {
       nombre: "Juan José Lizarazo",
-      rol: "Estudiant",
+      rol: "Estudiante",
       descripcion: "Software: Ananké",
       listaDeCursosTomados: [
         {
@@ -31,7 +31,7 @@ class App extends Component {
       rol: "Profesora",
       descripcion: "Antropología: UNAL",
       listaDeCursosTomados: [{nombre: "Arqueología", nota: 4,ciclo:"Ciclo VIII"}, 
-      {nombre: "Fund. Antropología", nota:3.3, ciclo:"Ciclo II"}]
+      {nombre: "Fund. Antropología", nota:3.3, ciclo:"Ciclo II"}, {nombre: "Latin", nota:2.4, ciclo:"Ciclo I"}]
     };
 
 

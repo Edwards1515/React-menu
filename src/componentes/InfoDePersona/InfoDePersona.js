@@ -66,14 +66,18 @@ class InfoDePersona extends Component {
 
     obtenerDatos  = () => {
 
+        let nombre = this.props.persona.nombre;
         
-    for (let i = 0; i < this.props.persona.nombre.length; i++) {
-        var nombre = this.props.persona.nombre[i];
+    for (let i = 0; i < nombre; i++) {
+        nombre = nombre[i];
         
 
     }
-    for (let i = 0; i < this.props.persona.rol.length; i++) {
-        var rol = this.props.persona.rol[i];
+
+        let rol = this.props.persona.rol;
+
+    for (let i = 0; i < rol; i++) {
+        rol = rol[i];
 
     }
         return(
