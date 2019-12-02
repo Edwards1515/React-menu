@@ -24,6 +24,11 @@ class App extends Component {
           nombre: "Express JS",
           nota: 5.0,
           ciclo:"Ciclo V"
+        },
+        {
+          nombre: "PHP",
+          nota: 2.0,
+          ciclo:"Ciclo I"
         }]
     };
 
