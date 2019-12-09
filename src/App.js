@@ -1,54 +1,106 @@
 import React, { Component } from 'react';
-import InfoDePersona from './componentes/InfoDePersona/InfoDePersona';
+import TarjetaDePromociones from './componentes/infoDePromociones/TarjetaDePromociones';
+
+
 
 class App extends Component {
+
+  constructor() {
+    super();
+
+    this.state = {
+      producto: [],
+      productoBackup: [],
+      textBuscar: "",
+      miArrayDePersonas: [],
+      criterioDeOrdenamiento: {
+        nombreDelCriterio: "nombre",
+        descendente: false
+      },
+      arrayDeProfesores :[],
+      arrayDeRestaurantes1:[]
+    }
+  }
+
+  componentDidMount() {
+
+    // fetch('https://curso-ananke-back.herokuapp.com/data/obtenerTodosLosDocentes',
+    //   {
+    //     method: 'post',
+    //     headers: {
+    //       'Content-Type': 'application/json'
+    //     },
+    //     body: JSON.stringify({
+    //       nombre: asdasd,
+    //       valor: asdasd
+    //     })
+    //   })
+    //https://tallerfinal.herokuapp.com/taller/obtenerTodosLosRestaurantes
+    fetch('https://curso-ananke-back.herokuapp.com/data/obtenerTodosLosDocentes')
+      .then(response => {
+        response.json()
+          .then(datos =>{
+            this.setState({
+              arrayDeProfesores: datos.docentes
+            })
+            console.log(this.state.arrayDeProfesores);
+          })
+          .catch(err => console.log(err))
+      })
+      .catch(err => console.log(err))
+
+     
+
+        fetch('https://tallerfinal.herokuapp.com/taller/obtenerTodosLasPromociones')
+        .then(response => {
+          response.json()
+            .then(datos =>{
+              this.setState({
+                arrayDeRestaurantes1: datos.Promociones
+              })
+              console.log(this.state.arrayDeRestaurantes1);
+            })
+            .catch(err => console.log(err))
+        })
+        .catch(err => console.log(err))
+    }
+  
+
   render() {
-
-    let miPersona = {
-      nombre: "Juan José Lizarazo",
-      rol: "Estudiante",
-      descripcion: "Software: Ananké",
-      imagen:'assets/images/avatars/juan.jpeg',
-      listaDeCursosTomados: [
-        {
-          nombre: ".NET",
-          nota: 4.4,
-          ciclo:"Ciclo IV"
-        },
-        {
-          nombre: "Oracle DB",
-          nota: 2.1,
-          ciclo:"Ciclo III"
-        },
-        {
-          nombre: "Express JS",
-          nota: 5.0,
-          ciclo:"Ciclo V"
-        },
-        {
-          nombre: "PHP",
-          nota: 2.0,
-          ciclo:"Ciclo I"
-        }]
-    };
-
-    let miOtraPersona = {
-      nombre: "Narda Amador",
-      rol: "Estudiante",
-      descripcion: "Antropología: UNAL",
-      imagen:'assets/images/avatars/narda.jpeg',
-      listaDeCursosTomados: [{nombre: "Arqueología", nota: 4,ciclo:"Ciclo VIII"}, 
-      {nombre: "Fund. Antropología", nota:3.3, ciclo:"Ciclo II"}, {nombre: "Latin", nota:2.4, ciclo:"Ciclo I"}]
-    };
-
 
     return (
       <React.Fragment>
-        <InfoDePersona persona={miPersona}></InfoDePersona>
-        <InfoDePersona persona={miOtraPersona}></InfoDePersona>
-      </React.Fragment>
+               
+                <div className="container">
+                    <div className="main_title">
+                        <h2>Menú de Promociones</h2>
+                        <p>...</p>
+                    </div>
+                    {/* {this.obtenerCardsConTarjetasDePersonas()} */}
+                    {this.obtenerCardsConDocentesDesdeElBack()}
+                </div>
+            </React.Fragment>
     );
   }
+
+ 
+
+
+
+  obtenerCardsConDocentesDesdeElBack = () => {
+    let arrayDeCardsHTML = [];
+    for (let i = 0; i < this.state.arrayDeRestaurantes1.length; i++) {
+      arrayDeCardsHTML.push(
+        <TarjetaDePromociones promocion="2x1" restaurante={this.state.arrayDeRestaurantes1[i]}></TarjetaDePromociones>
+        
+      )
+     
+     
+    }
+    return arrayDeCardsHTML;
+  }
+
+ 
 }
 
 export default App;
