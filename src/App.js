@@ -9,14 +9,7 @@ class App extends Component {
     super();
 
     this.state = {
-      producto: [],
-      productoBackup: [],
-      textBuscar: "",
-      miArrayDePersonas: [],
-      criterioDeOrdenamiento: {
-        nombreDelCriterio: "nombre",
-        descendente: false
-      },
+      
       arrayDeProfesores :[],
       arrayDeRestaurantes1:[]
     }
@@ -51,12 +44,12 @@ class App extends Component {
 
      
 
-        fetch('https://tallerfinal.herokuapp.com/taller/obtenerTodosLasPromociones')
+        fetch('https://react-ananke.herokuapp.com/data/obtenerPromociones')
         .then(response => {
           response.json()
             .then(datos =>{
               this.setState({
-                arrayDeRestaurantes1: datos.Promociones
+                arrayDeRestaurantes1: datos.Promo
               })
               console.log(this.state.arrayDeRestaurantes1);
             })
