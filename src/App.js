@@ -66,7 +66,7 @@ class App extends Component {
                
                 <div className="container">
                     <div className="main_title">
-                        <h2>Menú de Promociones</h2>
+                        <h4>Menú de Promociones</h4>
                         <p>...</p>
                     </div>
                     {/* {this.obtenerCardsConTarjetasDePersonas()} */}
